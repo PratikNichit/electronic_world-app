@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import ProductCard from './ProductCard';
 
 interface Product {
   id: number;
@@ -6,6 +7,7 @@ interface Product {
   description: string;
   imageSrc: string;
   category: string;
+  price: number;
 }
 
 const products: Product[] = [
@@ -15,6 +17,7 @@ const products: Product[] = [
     description: 'High-performance microcontrollers for embedded applications',
     imageSrc: '/api/placeholder/300/200',
     category: 'Embedded',
+    price: 9.99
   },
   {
     id: 2,
@@ -22,6 +25,7 @@ const products: Product[] = [
     description: 'DRAM, SRAM, and Flash memory solutions for various applications',
     imageSrc: '/api/placeholder/300/200',
     category: 'Memory',
+    price: 8.49
   },
   {
     id: 3,
@@ -29,6 +33,7 @@ const products: Product[] = [
     description: 'Efficient power management solutions for electronic devices',
     imageSrc: '/api/placeholder/300/200',
     category: 'Power',
+    price: 7.99
   },
   {
     id: 4,
@@ -36,6 +41,7 @@ const products: Product[] = [
     description: 'High-precision analog integrated circuits for signal processing',
     imageSrc: '/api/placeholder/300/200',
     category: 'Analog',
+    price: 12.99
   },
   {
     id: 5,
@@ -43,6 +49,7 @@ const products: Product[] = [
     description: 'Radio frequency components for wireless communication',
     imageSrc: '/api/placeholder/300/200',
     category: 'RF',
+    price: 15.99
   },
   {
     id: 6,
@@ -50,41 +57,9 @@ const products: Product[] = [
     description: 'Advanced sensors for various industrial and consumer applications',
     imageSrc: '/api/placeholder/300/200',
     category: 'Sensors',
+    price: 6.99
   },
 ];
-
-const ProductCard: FC<{ product: Product }> = ({ product }) => {
-  return (
-    <div className="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
-      <div className="h-48 overflow-hidden">
-        <img 
-          src={product.imageSrc} 
-          alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-500 transform hover:scale-110"
-        />
-      </div>
-      <div className="p-6">
-        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200 mb-2">
-          {product.category}
-        </span>
-        <h3 className="text-xl font-bold text-white mb-2">{product.name}</h3>
-        <p className="text-gray-400 mb-4">{product.description}</p>
-        <button className="text-blue-500 hover:text-blue-400 text-sm font-medium flex items-center">
-          Learn More
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-4 w-4 ml-1" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  );
-};
 
 const FeaturedProducts = () => {
   return (
@@ -106,16 +81,16 @@ const FeaturedProducts = () => {
         </div>
 
         <div className="text-center mt-12">
-          <a
-            href="#"
+          <Link
+            to="/products"
             className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-300"
           >
             View All Products
-          </a>
+          </Link>
         </div>
       </div>
     </section>
   );
 };
 
-export default FeaturedProducts;
+export default FeaturedProducts;  

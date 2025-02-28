@@ -12,7 +12,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetailPage />} />
-          {/* Add more routes as you build more pages */}
         </Routes>
         <Footer />
       </div>
