@@ -1,14 +1,22 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import ProductDetailPage from './pages/ProductDetailPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
-      <Navbar />
-      <Home />
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-slate-900 text-white">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:id" element={<ProductDetailPage />} />
+          {/* Add more routes as you build more pages */}
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
